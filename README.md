@@ -1,1 +1,1 @@
-Cada carpeta cuEnta con su propio README
+Cada carpeta cuenta con su propio README
