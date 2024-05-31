@@ -62,7 +62,7 @@ public class DetallesControllerTests {
         detalle.setId_detalle(1L);
         when(detallesRepository.findById(1L))
         .thenReturn(Optional.of(detalle));
-        mockMvc.perform(get("/api/motos/1"))
+        mockMvc.perform(get("/api/motos/detalles/1"))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.id_detalle").value(1));
         verify(detallesRepository, times(1)).findById(1L);                  
@@ -93,13 +93,12 @@ public class DetallesControllerTests {
         Detalles detalle = new Detalles();
         detalle.setId_detalle(1L);
         
-
         ObjectMapper objectMapper = new ObjectMapper();
         String detallesjson = objectMapper.writeValueAsString(detalle);
 
         when(detallesRepository.save(any(Detalles.class))).thenReturn(detalle);
 
-        mockMvc.perform(put("/api/motos/1")
+        mockMvc.perform(put("/api/motos/detalles/1")
             .contentType(MediaType.APPLICATION_JSON)
             .content(detallesjson))
             .andExpect(status().isOk())
@@ -116,7 +115,7 @@ public class DetallesControllerTests {
     @Test
     public void testDeleteDetalle() throws Exception {
         doNothing().when(detallesRepository).deleteById(1L);
-        mockMvc.perform(delete("/api/motos/1"))
+        mockMvc.perform(delete("/api/motos/detalles/1"))
         .andExpect(status().isNoContent());
         verify(detallesRepository, times(1)).deleteById(1L);
 
