@@ -36,9 +36,10 @@ function MotosForm ({onSubmit}){
         < form onSubmit={handleSubmit}> 
             <input type= "text" placeholder = "Marca" value={marca} onChange= {handleMarcaChange} required />
             <input type= "text" placeholder = "Modelo" value={modelo} onChange= {handleModeloChange} required />
-            <input type= "text" placeholder = "Cilindraje" value={modelo} onChange= {handleCilindrajeChange} required />
+            <input type= "text" placeholder = "Cilindraje" value={cilindraje} onChange= {handleCilindrajeChange} required />
             <input type= "text" placeholder = "placa" value={placa} onChange= {handlePlacaChange} required />
             <br/>
+            
             <button type ="Submit">Guardar</button>
         </form>
         
