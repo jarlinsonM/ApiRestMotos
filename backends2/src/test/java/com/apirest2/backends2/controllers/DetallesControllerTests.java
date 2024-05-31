@@ -72,10 +72,11 @@ public class DetallesControllerTests {
     public void testCreateDetalle() throws Exception{
         Detalles detalle = new Detalles();
         detalle.setId_detalle(1L);
+
         ObjectMapper objectMapper = new ObjectMapper();
         String detallesjson = objectMapper.writeValueAsString(detalle);
-        when(detallesRepository.save(any(Detalles.class))).thenReturn(detalle);
 
+        when(detallesRepository.save(any(Detalles.class))).thenReturn(detalle);
         mockMvc.perform(post("/api/motos/detalles")).
             .contentType(MediaType.APPLICATION_JSON)
             .content(detallesjson)
@@ -97,7 +98,6 @@ public class DetallesControllerTests {
         String detallesjson = objectMapper.writeValueAsString(detalle);
 
         when(detallesRepository.save(any(Detalles.class))).thenReturn(detalle);
-
         mockMvc.perform(put("/api/motos/detalles/1")
             .contentType(MediaType.APPLICATION_JSON)
             .content(detallesjson))
@@ -107,8 +107,6 @@ public class DetallesControllerTests {
             .andExpect(jsonPath("$.modelo").isEmpty())
             .andExpect(jsonPath("$.cilindraje").isEmpty())
             .andExpect(jsonPath("$.placa").isEmpty());
-            
-
         verify(detallesRepository, times(1)).save(any(Detalles.class));
     }
 
